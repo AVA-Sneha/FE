@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: customer-app
-          image: myregistry.azurecr.io/customer-app:v1
+          image: myacr.azurecr.io/frontend-image:v1
           ports:
             - containerPort: 3001
 ---
