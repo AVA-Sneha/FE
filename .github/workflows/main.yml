@@ -28,9 +28,7 @@ jobs:
       run: |
           docker build -t myacr.azurecr.io/frontend-image:v1
           docker push myacr.azurecr.io/frontend-image:v1
-          docker build -t myacr.azurecr.io/backend-image:v1
-          docker push myacr.azurecr.io/backend-image:v1
-
+    
     - name: Deploy to AKS
       uses: azure/k8s-set-context@v1
       with:
