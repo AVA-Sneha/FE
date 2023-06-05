@@ -9,6 +9,11 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
+    - name: Install Azure CLI
+      run: |
+        curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+      if: runner.os == 'Linux'
+
     - name: Checkout repo
       uses: actions/checkout@v2
 
