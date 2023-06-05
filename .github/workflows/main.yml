@@ -27,6 +27,10 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
+        enable-AzPSSession: false
+        environment: azurecloud
+        allow-no-subscriptions: false
+        audience: api://AzureADTokenExchange
 
     - name: Login to ACR
       uses: azure/docker-login@v1
