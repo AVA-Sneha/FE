@@ -37,7 +37,7 @@ jobs:
 
     - name: Build and push Docker images
       run: |
-        docker build -t acrca.azurecr.io/frontend-image:v1 .
+        docker build -t acrca.azurecr.io/frontend-image:v1
         docker push acrca.azurecr.io/frontend-image:v1
 
 
