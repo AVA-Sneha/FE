@@ -6,17 +6,28 @@ on:
       - main
 
 jobs:
-  build-and-deploy:
+  build-and-push:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
 
+    - name: Set up Python and Azure CLI
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        installation-path: /opt/hostedtoolcache/Python
+
+    - name: Install Azure CLI
+      run: |
+        python -m pip install --upgrade pip
+        pip install azure-cli
+
     - name: Login to Azure
       uses: azure/login@v1
       with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
- 
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: Login to ACR
       uses: azure/docker-login@v1
       with:
@@ -26,5 +37,7 @@ jobs:
 
     - name: Build and push Docker images
       run: |
-          docker build -t acrca.azurecr.io/frontend-image:v1
-          docker push acrca.azurecr.io/frontend-image:v1
+        docker build -t acrca.azurecr.io/frontend-image:v1 .
+        docker push acrca.azurecr.io/frontend-image:v1
+
+
