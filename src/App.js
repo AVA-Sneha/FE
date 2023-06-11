@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 const serverPort = 9000; 
-const serverURL = `http://localhost:${serverPort}/`;
+const serverURL = `http://20.124.174.208:${serverPort}/`;
 
 class CustomerApp extends Component {
   constructor() {
